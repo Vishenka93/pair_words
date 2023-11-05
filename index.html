@@ -7,6 +7,29 @@
         <title>English words app</title>
     </head>
     <body>
+        <div class="wrapper">
+            <div class="wrapper__inputs inputs">
+                <div class="inputs__item inputs__item_uk">
+                    <label for="ukrainian">Ukraine word</label>
+                    <input
+                        type="text"
+                        name="ukrainian"
+                        class="wrapper__input"
+                    />
+                </div>
+                <div class="inputs__item inputs__item_en">
+                    <label for="english">English word</label>
+                    <input type="text" name="english" class="wrapper__input" />
+                </div>
+            </div>
+            <div class="wrapper__button button-wrapper">
+                <button class="button-wrapper__button">ADD WORD PAIR</button>
+            </div>
+            <div class="wrapper__items">
+                Show words
+                <div class="wrapper__item"></div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
