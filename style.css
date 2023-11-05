@@ -46,7 +46,7 @@
     border: 2px solid #030303;
 }
 
-.button-wrapper__button:hover {
+.button-wrapper__button:hover:enabled {
     color: #a49d9d;
     background-color: rgb(232, 20, 98);
     border: 2px solid #a49d9d;
