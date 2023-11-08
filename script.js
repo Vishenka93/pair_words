@@ -4,9 +4,10 @@ const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
 
 const storagePairs = localStorage.getItem("words");
-const pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
+let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
 const pair = {
+    id: null,
     ukWord: "",
     enWord: "",
 };
@@ -15,10 +16,25 @@ btn.disabled = true;
 
 const displayPairs = () => {
     items.innerHTML = "";
-    pairs.forEach(({ enWord, ukWord }) => {
+    pairs.forEach(({ enWord, ukWord, id }) => {
+        const div = document.createElement("div");
+        div.classList.add("pair-word");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "delete";
+        deleteBtn.onclick = () => {
+            pairs = pairs.filter((pair) => pair.id !== id);
+
+            localStorage.setItem("words", JSON.stringify(pairs));
+            displayPairs();
+        };
+
         const p = document.createElement("p");
         p.textContent = `${ukWord} - ${enWord}`;
-        items.appendChild(p);
+
+        div.appendChild(p);
+        div.appendChild(deleteBtn);
+        items.appendChild(div);
     });
 };
 
@@ -33,7 +49,7 @@ inputEn.oninput = (e) => {
 };
 
 btn.onclick = () => {
-    pairs.push({ ...pair });
+    pairs.push({ ...pair, id: pairs.length });
     localStorage.setItem("words", JSON.stringify(pairs));
 
     pair["ukWord"] = "";
@@ -43,6 +59,7 @@ btn.onclick = () => {
     inputEn.value = "";
     btn.disabled = true;
     displayPairs();
+    console.log(pairs);
 };
 
 displayPairs();

@@ -58,3 +58,8 @@
     font-weight: 700;
     text-align: center;
 }
+
+.pair-word {
+    display: flex;
+    gap: 15px;
+}
