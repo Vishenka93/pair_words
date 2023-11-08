@@ -3,7 +3,8 @@ const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
 
-const pairs = [];
+const storagePairs = localStorage.getItem("words");
+const pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
 const pair = {
     ukWord: "",
@@ -33,6 +34,7 @@ inputEn.oninput = (e) => {
 
 btn.onclick = () => {
     pairs.push({ ...pair });
+    localStorage.setItem("words", JSON.stringify(pairs));
 
     pair["ukWord"] = "";
     pair["enWord"] = "";
@@ -42,3 +44,5 @@ btn.onclick = () => {
     btn.disabled = true;
     displayPairs();
 };
+
+displayPairs();
