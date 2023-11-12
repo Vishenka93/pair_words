@@ -59,7 +59,6 @@ btn.onclick = () => {
     inputEn.value = "";
     btn.disabled = true;
     displayPairs();
-    console.log(pairs);
 };
 
 displayPairs();
