@@ -163,3 +163,49 @@ button:hover {
     height: 50px;
     display: inline-block;
 }
+
+/* -------------------true or false-----------------------*/
+
+.true-or-false-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 200px 10px;
+    /* display: none; */
+}
+
+.true-or-false-content__item {
+    font-family: Inter;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: 0em;
+    margin-bottom: 60px;
+}
+
+.true-or-false-content__buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.true-or-false-content__button {
+    width: 326px;
+    height: 146px;
+    border-radius: 10px;
+    border: 1px;
+    font-family: Inter;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 58px;
+}
+
+.selected-tab {
+    background-color: #2400ff;
+}
+.true {
+    background-color: #2400ff;
+}
+
+.false {
+    background-color: #fb769e;
+}

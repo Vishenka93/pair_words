@@ -10,17 +10,24 @@
         <div class="wrapper">
             <main class="main">
                 <div class="wrapper__toolbar toolbar">
-                    <button class="toolbar__words">words</button>
+                    <button class="toolbar__words" data-name="words">
+                        words
+                    </button>
                     <div class="toolbar__exercises exercises">
                         <h2 class="exercises__title">Exercises</h2>
-                        <button class="exercises__true-of-false">
+                        <button
+                            class="exercises__true-of-false"
+                            data-name="true-or-false"
+                        >
                             true or false
                         </button>
-                        <button class="exercises__quiz">quiz</button>
+                        <button class="exercises__quiz" data-name="quiz">
+                            quiz
+                        </button>
                     </div>
                 </div>
                 <div class="wrapper__show-content show-content">
-                    <div class="wrapper-content">
+                    <div class="wrapper-content" data-name="words">
                         <div class="wrapper__inputs inputs">
                             <div class="inputs__item inputs__item_uk">
                                 <label for="ukrainian">Ukraine word</label>
@@ -49,6 +56,21 @@
                             </div>
                         </div>
                     </div>
+                    <div
+                        class="show-content__true-or-false true-or-false-content"
+                        data-name="true-or-false"
+                    >
+                        <div class="true-or-false-content__item">hi</div>
+                        <div class="true-or-false-content__buttons">
+                            <button class="true-or-false-content__button true">
+                                TRUE
+                            </button>
+                            <button class="true-or-false-content__button false">
+                                FALSE
+                            </button>
+                        </div>
+                    </div>
+                    <div class="quiz" data-name="quiz">quiz</div>
                 </div>
             </main>
             <footer class="footer"></footer>
