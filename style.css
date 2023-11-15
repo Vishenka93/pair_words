@@ -1,4 +1,87 @@
+html,
+body {
+    height: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button {
+    color: #000;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    height: 73px;
+    width: 100%;
+}
+button:hover {
+    border-radius: 5px;
+    border: 1px solid #000;
+    background: #87acf3;
+}
+
 .wrapper {
+    display: flex;
+    background-color: #d9d9d9;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 1 100%;
+    display: flex;
+}
+.toolbar {
+    flex: 0 1 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-right: 21px;
+    margin-left: 21px;
+}
+
+.toolbar__words {
+    margin-top: 57px;
+    margin-bottom: 112px;
+}
+
+.show-content::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    background-color: #000;
+}
+
+.exercises {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.exercises__title {
+    color: #000;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    margin-bottom: 54px;
+}
+.exercises__true-of-false {
+    margin-bottom: 37px;
+}
+
+.show-content {
+    flex: 0 1 1100px;
+}
+
+.wrapper-content {
     display: flex;
     padding: 100px 10px;
     flex-direction: column;
@@ -33,6 +116,8 @@
 
 .button-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
@@ -41,6 +126,9 @@
     font-weight: 700;
     letter-spacing: 2px;
     padding: 20px 20px;
+    width: 400px;
+    height: 70px;
+    margin-bottom: 20px;
 
     justify-content: center;
     border: 2px solid #030303;
@@ -48,7 +136,7 @@
 
 .button-wrapper__button:hover:enabled {
     color: #a49d9d;
-    background-color: rgb(232, 20, 98);
+    background-color: rgb(9, 154, 57);
     border: 2px solid #a49d9d;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
@@ -57,9 +145,21 @@
     font-size: 20px;
     font-weight: 700;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper__title {
+    margin-bottom: 20px;
 }
 
 .pair-word {
-    display: flex;
-    gap: 15px;
+}
+
+/* .wrapper__item {
+    width: 100%;
+} */
+.delete {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
 }

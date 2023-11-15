@@ -8,31 +8,50 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="wrapper__inputs inputs">
-                <div class="inputs__item inputs__item_uk">
-                    <label for="ukrainian">Ukraine word</label>
-                    <input
-                        type="text"
-                        name="ukrainian"
-                        class="wrapper__input_uk"
-                    />
+            <main class="main">
+                <div class="wrapper__toolbar toolbar">
+                    <button class="toolbar__words">words</button>
+                    <div class="toolbar__exercises exercises">
+                        <h2 class="exercises__title">Exercises</h2>
+                        <button class="exercises__true-of-false">
+                            true or false
+                        </button>
+                        <button class="exercises__quiz">quiz</button>
+                    </div>
                 </div>
-                <div class="inputs__item inputs__item_en">
-                    <label for="english">English word</label>
-                    <input
-                        type="text"
-                        name="english"
-                        class="wrapper__input_en"
-                    />
+                <div class="wrapper__show-content show-content">
+                    <div class="wrapper-content">
+                        <div class="wrapper__inputs inputs">
+                            <div class="inputs__item inputs__item_uk">
+                                <label for="ukrainian">Ukraine word</label>
+                                <input
+                                    type="text"
+                                    name="ukrainian"
+                                    class="wrapper__input_uk"
+                                />
+                            </div>
+                            <div class="inputs__item inputs__item_en">
+                                <label for="english">English word</label>
+                                <input
+                                    type="text"
+                                    name="english"
+                                    class="wrapper__input_en"
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper__button button-wrapper">
+                            <button class="button-wrapper__button">
+                                ADD WORD PAIR
+                            </button>
+                            <div class="wrapper__items">
+                                <h2 class="wrapper__title">Show words</h2>
+                                <div class="wrapper__item"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="wrapper__button button-wrapper">
-                <button class="button-wrapper__button">ADD WORD PAIR</button>
-            </div>
-            <div class="wrapper__items">
-                Show words
-                <div class="wrapper__item"></div>
-            </div>
+            </main>
+            <footer class="footer"></footer>
         </div>
         <script src="script.js"></script>
     </body>
