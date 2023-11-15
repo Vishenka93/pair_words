@@ -22,6 +22,8 @@ const displayPairs = () => {
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "delete";
+        deleteBtn.classList.add("delete");
+
         deleteBtn.onclick = () => {
             pairs = pairs.filter((pair) => pair.id !== id);
 
@@ -51,9 +53,6 @@ inputEn.oninput = (e) => {
 btn.onclick = () => {
     pairs.push({ ...pair, id: pairs.length });
     localStorage.setItem("words", JSON.stringify(pairs));
-
-    pair["ukWord"] = "";
-    pair["enWord"] = "";
 
     inputUk.value = "";
     inputEn.value = "";
