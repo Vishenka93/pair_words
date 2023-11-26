@@ -1,3 +1,5 @@
+import { exirciseTrueOrFalse } from "./trueOfFalse.js";
+
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
@@ -10,7 +12,6 @@ const toolbarBtnQuiz = document.querySelector(".exercises__quiz");
 const contentWords = document.querySelector(".wrapper-content");
 const contentTrueOrFalse = document.querySelector(".true-or-false-content");
 const contentQuiz = document.querySelector(".quiz");
-
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
@@ -93,6 +94,9 @@ toolbarBtns.forEach((btn) => {
         const tabName = e.target.dataset.name;
 
         handleClickTab(tabName);
+        if (tabName === "true-or-false") {
+            exirciseTrueOrFalse(pairs);
+        }
     };
 });
 
