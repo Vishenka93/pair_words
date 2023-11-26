@@ -11,11 +11,17 @@ const restartBtn = document.querySelector(".restart");
 // пары слов
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
-
+let quantity = 12;
 export const exirciseTrueOrFalse = (pairs) => {
-    const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, 10); // тут взяли 10 слов из общего количества в словаре
-    const randomWordsUk = pairs.sort(() => 0.5 - Math.random()).slice(0, 10); // просто рандомные пары слов
+    const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
+    const randomWordsUk = pairs
+        .sort(() => 0.5 - Math.random())
+        .slice(0, quantity); // просто рандомные пары слов
 
+    const btns = [
+        [btnFalse, false],
+        [btnTrue, true],
+    ];
     let currentQuestion = 0; // номер текущего вопроса, начиная с 0
     let score = 0; //количество правильных ответов
     let randomUk = ""; // правильная либо неправильная форма перевода, в зависимости от того как отработал рандом
@@ -31,7 +37,9 @@ export const exirciseTrueOrFalse = (pairs) => {
                 ? selected[i]["ukWord"]
                 : randomWordsUk[i]["ukWord"];
         item.textContent = `${en} = ${randomUk}`;
-        currentQuestionShow.textContent = `current question: ${i + 1} / 10`; //номер вопроса начиная с 1
+        currentQuestionShow.textContent = `current question: ${
+            i + 1
+        } / ${quantity}`; //номер вопроса начиная с 1
     };
 
     const handleAnswer = (answer, i) => {
@@ -45,29 +53,20 @@ export const exirciseTrueOrFalse = (pairs) => {
     const finish = () => {
         content.style.display = "none";
         result.style.display = "block";
-        resultScore.textContent = `your result: ${score} / 10`;
+        resultScore.textContent = `your result: ${score} / ${quantity}`;
     };
 
-    btnFalse.onclick = () => {
-        //попробовать рефакторинг, одинаковые функции для двух кнопок
-        handleAnswer(false, currentQuestion);
-        currentQuestion++;
-        if (currentQuestion < 10) {
-            showWords(currentQuestion);
-        } else {
-            finish();
-        }
-    };
-
-    btnTrue.onclick = () => {
-        handleAnswer(true, currentQuestion);
-        currentQuestion++;
-        if (currentQuestion < 10) {
-            showWords(currentQuestion);
-        } else {
-            finish();
-        }
-    };
+    btns.forEach(([btn, answer]) => {
+        btn.onclick = () => {
+            handleAnswer(answer, currentQuestion);
+            currentQuestion++;
+            if (currentQuestion < quantity) {
+                showWords(currentQuestion);
+            } else {
+                finish();
+            }
+        };
+    });
 
     showWords(currentQuestion); //отрисовка первого вопроса при загрузке нашей игры
 };
