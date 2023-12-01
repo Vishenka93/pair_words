@@ -26,8 +26,6 @@ const pair = {
     enWord: "",
 };
 
-btn.disabled = true;
-
 const displayPairs = () => {
     items.innerHTML = "";
     pairs.forEach(({ enWord, ukWord, id }) => {
@@ -56,12 +54,16 @@ const displayPairs = () => {
 
 inputUk.oninput = (e) => {
     pair["ukWord"] = e.target.value;
-    btn.disabled = Object.values(pair).some((str) => str === "");
+    btn.style.display = Object.values(pair).some((str) => str === "")
+        ? "none"
+        : "block";
 };
 
 inputEn.oninput = (e) => {
     pair["enWord"] = e.target.value;
-    btn.disabled = Object.values(pair).some((str) => str === "");
+    btn.style.display = Object.values(pair).some((str) => str === "")
+        ? "none"
+        : "block";
 };
 
 btn.onclick = () => {
@@ -100,4 +102,5 @@ toolbarBtns.forEach((btn) => {
     };
 });
 
+btn.style.display = "none";
 handleClickTab(defaultTabName);
