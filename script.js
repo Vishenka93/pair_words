@@ -97,6 +97,7 @@ btn.onclick = () => {
 
     inputUk.value = "";
     inputEn.value = "";
+    btn.style.display = "none";
     displayPairs();
 };
 
