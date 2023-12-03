@@ -20,13 +20,13 @@ const defaultTabName = "words";
 const toolbarBtns = [toolbarBtnWords, toolbarBtnTrueOrFalse, toolbarBtnQuiz];
 const toolbarContents = [contentWords, contentTrueOrFalse, contentQuiz];
 
-const pair = {
+let pair = {
     id: null,
     ukWord: "",
     enWord: "",
 };
 
-btn.disabled = true;
+let isEdit = false;
 
 const displayPairs = () => {
     items.innerHTML = "";
@@ -37,6 +37,9 @@ const displayPairs = () => {
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "delete";
         deleteBtn.classList.add("delete");
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "edit";
+        editBtn.classList.add("delete");
 
         deleteBtn.onclick = () => {
             pairs = pairs.filter((pair) => pair.id !== id);
@@ -45,10 +48,23 @@ const displayPairs = () => {
             displayPairs();
         };
 
+        editBtn.onclick = () => {
+            btn.textContent = "SAVE CHANGES";
+            inputUk.value = ukWord;
+            inputEn.value = enWord;
+            isEdit = true;
+            pair = {
+                enWord,
+                ukWord,
+                id,
+            };
+        };
+
         const p = document.createElement("p");
         p.textContent = `${ukWord} - ${enWord}`;
 
         div.appendChild(p);
+        div.appendChild(editBtn);
         div.appendChild(deleteBtn);
         items.appendChild(div);
     });
@@ -65,12 +81,17 @@ inputEn.oninput = (e) => {
 };
 
 btn.onclick = () => {
-    pairs.push({ ...pair, id: pairs.length });
+    if (isEdit) {
+        pairs = pairs.map((p) => (p.id === pair["id"] ? { ...pair } : p));
+        isEdit = false;
+        btn.textContent = "ADD WORD PAIR";
+    } else {
+        pairs.push({ ...pair, id: pairs.length });
+    }
     localStorage.setItem("words", JSON.stringify(pairs));
 
     inputUk.value = "";
     inputEn.value = "";
-    btn.disabled = true;
     displayPairs();
 };
 
