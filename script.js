@@ -1,4 +1,5 @@
 import { exirciseTrueOrFalse } from "./trueOfFalse.js";
+import { exsiciseQuiz } from "./quiz.js";
 
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
@@ -98,6 +99,8 @@ toolbarBtns.forEach((btn) => {
         handleClickTab(tabName);
         if (tabName === "true-or-false") {
             exirciseTrueOrFalse(pairs);
+        } else if (tabName === "quiz") {
+            exsiciseQuiz(pairs);
         }
     };
 });
