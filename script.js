@@ -1,4 +1,5 @@
 import { exirciseTrueOrFalse } from "./trueOfFalse.js";
+import { exsiciseQuiz } from "./quiz.js";
 
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
@@ -72,12 +73,16 @@ const displayPairs = () => {
 
 inputUk.oninput = (e) => {
     pair["ukWord"] = e.target.value;
-    btn.disabled = Object.values(pair).some((str) => str === "");
+    btn.style.display = Object.values(pair).some((str) => str === "")
+        ? "none"
+        : "block";
 };
 
 inputEn.oninput = (e) => {
     pair["enWord"] = e.target.value;
-    btn.disabled = Object.values(pair).some((str) => str === "");
+    btn.style.display = Object.values(pair).some((str) => str === "")
+        ? "none"
+        : "block";
 };
 
 btn.onclick = () => {
@@ -117,8 +122,11 @@ toolbarBtns.forEach((btn) => {
         handleClickTab(tabName);
         if (tabName === "true-or-false") {
             exirciseTrueOrFalse(pairs);
+        } else if (tabName === "quiz") {
+            exsiciseQuiz(pairs);
         }
     };
 });
 
+btn.style.display = "none";
 handleClickTab(defaultTabName);
