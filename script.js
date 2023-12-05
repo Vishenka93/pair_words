@@ -1,6 +1,6 @@
 import { exirciseTrueOrFalse } from "./trueOfFalse.js";
 import { exsiciseQuiz } from "./quiz.js";
-
+// test
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
