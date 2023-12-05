@@ -108,13 +108,13 @@ btn.onclick = () => {
 
 displayPairs();
 
-const handleClickTab = (tabName) => {
+const handleClickTab = (tabName, lang) => {
     toolbarContents.forEach((content) => {
         content.style.display =
             content.dataset.name === tabName ? "block" : "none";
     });
     toolbarBtns.forEach((button) => {
-        if (button.dataset.name === tabName) {
+        if (button.dataset.name === tabName && button.dataset.lang === lang) {
             button.classList.add("selected-tab");
         } else {
             button.classList.remove("selected-tab");
