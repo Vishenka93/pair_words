@@ -125,7 +125,6 @@ toolbarBtns.forEach((btn) => {
     btn.onclick = (e) => {
         const tabName = e.target.dataset.name;
         const lang = e.target.dataset.lang;
-        console.log(tabName, lang);
         handleClickTab(tabName, lang);
         if (tabName === "true-or-false") {
             exirciseTrueOrFalse(pairs);
