@@ -4,20 +4,20 @@ const currentQuestionShow = document.querySelector(".quiz__question");
 const result = document.querySelector(".quiz__result");
 const resultScore = document.querySelector(".quiz__result-score");
 const content = document.querySelector(".quiz__content");
-// const restartBtn = document.querySelector(".quiz__restart");
+const restartBtn = document.querySelector(".quiz__restart");
 const answerBtns = document.querySelectorAll(".quiz__button");
-// пары слов
-// const storagePairs = localStorage.getItem("words");
-// let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
+
+const storagePairs = localStorage.getItem("words");
+let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 let quantity = 12;
 export const exsiciseQuiz = (pairs, lang) => {
     const sourceLang = lang === "en" ? "enWord" : "ukWord";
     const targetLang = lang === "en" ? "ukWord" : "enWord";
     // console.log(sourceLang, targetLang);
-    const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
+    const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); 
 
-    let currentQuestion = 0; // номер текущего вопроса, начиная с 0
-    let score = 0; //количество правильных ответов
+    let currentQuestion = 0; 
+    let score = 0; 
 
     content.style.display = "block";
     result.style.display = "none";
@@ -36,7 +36,6 @@ export const exsiciseQuiz = (pairs, lang) => {
             btn.textContent = answers[idx];
             btn.dataset.value = answers[idx];
         });
-        console.log(answers);
         const en = selected[i][sourceLang];
 
         item.textContent = en;
@@ -71,10 +70,11 @@ export const exsiciseQuiz = (pairs, lang) => {
         };
     });
 
-    showWords(currentQuestion); //отрисовка первого вопроса при загрузке нашей игры
+    showWords(currentQuestion); 
+    restartBtn.onclick = () => {
+        exsiciseQuiz(pairs, lang);
+    };
 };
 
-// restartBtn.onclick = () => {
-//     exsiciseQuiz(pairs, lang);
-// };
-// 10 вынети в конст и сделать функционал для изменени кол-ва слов
+
+
