@@ -1,3 +1,5 @@
+import { storeResult } from "./utils.js";
+
 const item = document.querySelector(".quiz__item");
 const currentQuestionShow = document.querySelector(".quiz__question");
 
@@ -10,9 +12,9 @@ const answerBtns = document.querySelectorAll(".quiz__button");
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 let quantity = 12;
-export const exsiciseQuiz = (pairs) => {
+export const exsiciseQuiz = (pairs, exercisefullName) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
-
+    console.log({ exercisefullName });
     let currentQuestion = 0; // номер текущего вопроса, начиная с 0
     let score = 0; //количество правильных ответов
 
@@ -52,6 +54,8 @@ export const exsiciseQuiz = (pairs) => {
         content.style.display = "none";
         result.style.display = "block";
         resultScore.textContent = `your result: ${score} / ${quantity}`;
+
+        storeResult(exercisefullName, score, quantity);
     };
 
     answerBtns.forEach((btn) => {

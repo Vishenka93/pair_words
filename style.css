@@ -42,6 +42,8 @@ button:hover {
     flex-direction: column;
     margin-right: 21px;
     margin-left: 21px;
+    gap: 30px;
+    text-align: center;
 }
 
 .toolbar__words {
@@ -208,4 +210,34 @@ button:hover {
 
 .false {
     background-color: #fb769e;
+}
+
+/* ========================= */
+
+.history-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.history-table {
+    max-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.history-table-header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+
+.history-table-cell {
+    border: 1px solid #000000;
+    padding: 10px;
 }

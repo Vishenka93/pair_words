@@ -1,5 +1,6 @@
 import { exirciseTrueOrFalse } from "./trueOfFalse.js";
 import { exsiciseQuiz } from "./quiz.js";
+import { showUserHistory } from "./history.js";
 
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
@@ -9,17 +10,29 @@ const toolbarBtnWords = document.querySelector(".toolbar__words");
 const toolbarBtnTrueOrFalse = document.querySelector(
     ".exercises__true-of-false"
 );
+const toolbarBtnHistory = document.querySelector(".stats__history");
 const toolbarBtnQuiz = document.querySelector(".exercises__quiz");
 const contentWords = document.querySelector(".wrapper-content");
 const contentTrueOrFalse = document.querySelector(".true-or-false-content");
 const contentQuiz = document.querySelector(".quiz");
+const contentHistory = document.querySelector(".history");
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
 const defaultTabName = "words";
 
-const toolbarBtns = [toolbarBtnWords, toolbarBtnTrueOrFalse, toolbarBtnQuiz];
-const toolbarContents = [contentWords, contentTrueOrFalse, contentQuiz];
+const toolbarBtns = [
+    toolbarBtnWords,
+    toolbarBtnTrueOrFalse,
+    toolbarBtnQuiz,
+    toolbarBtnHistory,
+];
+const toolbarContents = [
+    contentWords,
+    contentTrueOrFalse,
+    contentQuiz,
+    contentHistory,
+];
 
 let pair = {
     id: null,
@@ -119,12 +132,14 @@ const handleClickTab = (tabName) => {
 toolbarBtns.forEach((btn) => {
     btn.onclick = (e) => {
         const tabName = e.target.dataset.name;
-
+        const exercisefullName = e.target.dataset.fullname;
         handleClickTab(tabName);
         if (tabName === "true-or-false") {
-            exirciseTrueOrFalse(pairs);
+            exirciseTrueOrFalse(pairs, exercisefullName);
         } else if (tabName === "quiz") {
-            exsiciseQuiz(pairs);
+            exsiciseQuiz(pairs, exercisefullName);
+        } else if (tabName === "history") {
+            showUserHistory();
         }
     };
 });
