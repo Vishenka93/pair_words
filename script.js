@@ -1,5 +1,6 @@
 import { exirciseTrueOrFalse } from "./trueOfFalse.js";
 import { exsiciseQuiz } from "./quiz.js";
+import { showUserHistory } from "./history.js";
 
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
@@ -11,9 +12,12 @@ const toolbarBtnTrueOrFalse = document.querySelector(
 );
 const toolbarBtnQuizEn = document.querySelector(".exercises__quiz-en");
 const toolbarBtnQuizUk = document.querySelector(".exercises__quiz-uk");
+const toolbarBtnHistory = document.querySelector(".stats__button");
 const contentWords = document.querySelector(".wrapper-content");
 const contentTrueOrFalse = document.querySelector(".true-or-false-content");
 const contentQuiz = document.querySelector(".quiz");
+const contentHistory = document.querySelector(".content__history");
+
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
@@ -24,8 +28,14 @@ const toolbarBtns = [
     toolbarBtnTrueOrFalse,
     toolbarBtnQuizEn,
     toolbarBtnQuizUk,
+    toolbarBtnHistory,
 ];
-const toolbarContents = [contentWords, contentTrueOrFalse, contentQuiz];
+const toolbarContents = [
+    contentWords,
+    contentTrueOrFalse,
+    contentQuiz,
+    contentHistory,
+];
 
 let pair = {
     id: null,
@@ -133,6 +143,8 @@ toolbarBtns.forEach((btn) => {
             exsiciseQuiz(pairs, "en");
         } else if (tabName === "quiz" && lang === "uk") {
             exsiciseQuiz(pairs, "uk");
+        } else if (tabName === "history") {
+            showUserHistory();
         }
     };
 });

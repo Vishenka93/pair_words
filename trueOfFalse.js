@@ -54,6 +54,15 @@ export const exirciseTrueOrFalse = (pairs) => {
         content.style.display = "none";
         result.style.display = "block";
         resultScore.textContent = `your result: ${score} / ${quantity}`;
+
+        const history = JSON.parse(localStorage.getItem("history")) || [];
+        const userResult = {
+            timeStamp: Date.now(),
+            name: "true of false",
+            stats: `${score} / ${quantity}`,
+        };
+        history.push(userResult);
+        localStorage.setItem("history", JSON.stringify(history));
     };
 
     btns.forEach(([btn, answer]) => {
