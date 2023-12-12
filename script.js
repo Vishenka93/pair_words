@@ -33,14 +33,28 @@ const displayPairs = () => {
     items.innerHTML = "";
     pairs.forEach(({ enWord, ukWord, id }) => {
         const div = document.createElement("div");
-        div.classList.add("pair-word");
+        div.style.height = '80px' 
+        div.style.display = "flex"
+        div.style.marginBottom = "20px"
+
+        const blockWords = document.createElement("div")
+        blockWords.style.flex = "80%"
+        blockWords.style.display = "flex"
+        blockWords.style.alignItems = "center"
+
+        const blockBtns = document.createElement("div")
+        blockBtns.style.flex = "20%"
+        blockBtns.style.display = "flex"
+        blockBtns.style.alignItems = "center"
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "delete";
-        deleteBtn.classList.add("delete");
+        deleteBtn.classList.add("delete", "blue");
+
         const editBtn = document.createElement("button");
+        editBtn.style.marginRight = "10px"
         editBtn.textContent = "edit";
-        editBtn.classList.add("delete");
+        editBtn.classList.add("delete", "blue");
 
         deleteBtn.onclick = () => {
             pairs = pairs.filter((pair) => pair.id !== id);
@@ -61,12 +75,24 @@ const displayPairs = () => {
             };
         };
 
-        const p = document.createElement("p");
-        p.textContent = `${ukWord} - ${enWord}`;
-
-        div.appendChild(p);
-        div.appendChild(editBtn);
-        div.appendChild(deleteBtn);
+        const ukWor = document.createElement("div")
+        ukWor.style.flex = "40%"
+        const enWor = document.createElement("div")
+        enWor.style.flex = "40%"
+        const between = document.createElement("p")
+        between.style.flex = "20%"
+  
+        ukWor.textContent = `${ukWord}`;
+        enWor.textContent = `${enWord}`;
+        between.textContent = "-"
+       
+        blockWords.appendChild(ukWor)
+        blockWords.appendChild(between)
+        blockWords.appendChild(enWor)
+        blockBtns.appendChild(editBtn)
+        blockBtns.appendChild(deleteBtn)
+        div.appendChild(blockWords)
+        div.appendChild(blockBtns)
         items.appendChild(div);
     });
 };
