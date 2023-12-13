@@ -209,3 +209,57 @@ button:hover {
 .false {
     background-color: #fb769e;
 }
+
+.greenCard {
+    border: 2px solid green;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.blackCard {
+    border: 2px solid #000;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.blackCard:hover {
+    transform: translateY(-3px);
+}
+
+.blackCard,
+.greenCard {
+    border-radius: 5px;
+    text-align: center;
+}
+
+.builder__green-cards,
+.builder__black-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.builder {
+    height: 100%;
+}
+
+.builder__content,
+.builder__result {
+    height: 100%;
+}
+
+.flex-wrapper {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.builder__restart {
+    max-width: 250px;
+}
