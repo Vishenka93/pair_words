@@ -36,6 +36,9 @@
                         >
                             translation - word
                         </button>
+                        <button class="exercises__builder" data-name="builder">
+                            word builder
+                        </button>
                     </div>
                 </div>
                 <div class="wrapper__show-content show-content">
@@ -109,6 +112,24 @@
                             <button class="quiz__restart">restart</button>
                         </div>
                     </div>
+                    <div class="builder" data-name="builder">
+                        <div class="builder__content">
+                            <div class="flex-wrapper">
+                                <p class="builder__current-question"></p>
+                                <p class="builder__translation"></p>
+                                <div class="builder__green-cards"></div>
+                                <div class="builder__black-cards"></div>
+                            </div>
+                        </div>
+                        <div class="builder__result">
+                            <div class="flex-wrapper">
+                                <p class="builder__result-score"></p>
+                                <button class="builder__restart">
+                                    restart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
             <footer class="footer"></footer>
@@ -116,5 +137,6 @@
         <script type="module" src="js/toolbar.js"></script>
         <script type="module" src="js/exercises/trueOfFalse.js"></script>
         <script type="module" src="js/exercises/quiz.js"></script>
+        <script type="module" src="js/exercises/builder.jss"></script>
     </body>
 </html>
