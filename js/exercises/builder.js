@@ -76,36 +76,34 @@ export const wordBuilderExercise = (pairs) => {
                 black.textContent = shuffledLetters[i];
                 black.dataset.letter = shuffledLetters[i];
                 black.dataset.index = i;
-                black.onclick = (e) => {
-                    if (
-                        originalWord.startsWith(
-                            progress + e.target.dataset.letter
-                        )
-                    ) {
-                        progress += e.target.dataset.letter;
-                        chosenLettersIndexes.push(+e.target.dataset.index);
-                        currentLetterIndex += 1;
-                        if (currentLetterIndex < lettersQuantity) {
-                            buildWord();
-                        } else {
-                            currentQuestion++;
-                            if (currentQuestion < quantity) {
-                                goToNextWord();
-                                showWords(currentQuestion);
-                            } else {
-                                finish();
-                            }
-                        }
-                    } else {
-                        mistakes += 1;
-                        if (mistakes > 2) {
-                            finish(
-                                `You did 3 mistakes on word pair: ${translatedWord} - ${originalWord}.`
-                            );
-                        }
-                    }
-                };
+                black.onclick = handleBlackCardClick;
                 blackCardsWrapper.appendChild(black);
+            }
+        }
+    }
+
+    function handleBlackCardClick(e) {
+        if (originalWord.startsWith(progress + e.target.dataset.letter)) {
+            progress += e.target.dataset.letter;
+            chosenLettersIndexes.push(+e.target.dataset.index);
+            currentLetterIndex += 1;
+            if (currentLetterIndex < lettersQuantity) {
+                buildWord();
+            } else {
+                currentQuestion++;
+                if (currentQuestion < quantity) {
+                    goToNextWord();
+                    showWords(currentQuestion);
+                } else {
+                    finish();
+                }
+            }
+        } else {
+            mistakes += 1;
+            if (mistakes > 2) {
+                finish(
+                    `You did 3 mistakes on word pair: ${translatedWord} - ${originalWord}.`
+                );
             }
         }
     }
