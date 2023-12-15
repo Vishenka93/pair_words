@@ -19,13 +19,27 @@ const getDateStr = (ts) => {
     }.${year}`;
 };
 
-export const getHistoryTr = ({ timestamp, exercise, result }) => {
+const cssClassMods = ["bad", "normal", "excellent"];
+
+export const getHistoryTr = ({ timestamp, exercise, result }, colored) => {
     const tr = document.createElement("tr");
     tr.classList.add("history-row");
     const dateStr = getDateStr(timestamp);
     [dateStr, exercise, result].forEach((el) => {
         const td = document.createElement("td");
         td.textContent = el;
+        if (colored) {
+            const [res, q] = result.split("/");
+            let relativeResult = res / q;
+
+            let cssClassIndex = 0;
+            if (relativeResult >= 0.8) {
+                cssClassIndex = 2;
+            } else if (relativeResult >= 0.4) {
+                cssClassIndex = 1;
+            }
+            td.classList.add(cssClassMods[cssClassIndex]);
+        }
         td.classList.add("history-table-cell");
         tr.appendChild(td);
         return td;
