@@ -1,3 +1,5 @@
+import { storeUserHistory } from "../functions.js";
+
 const item = document.querySelector(".quiz__item");
 const currentQuestionShow = document.querySelector(".quiz__question");
 
@@ -8,7 +10,7 @@ const restartBtn = document.querySelector(".quiz__restart");
 const answerBtns = document.querySelectorAll(".quiz__button");
 
 let quantity = 12;
-export const exsiciseQuiz = (pairs, lang) => {
+export const exsiciseQuiz = (pairs, lang, name) => {
     const sourceLang = lang === "en" ? "enWord" : "ukWord";
     const targetLang = lang === "en" ? "ukWord" : "enWord";
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity);
@@ -52,6 +54,8 @@ export const exsiciseQuiz = (pairs, lang) => {
         content.style.display = "none";
         result.style.display = "block";
         resultScore.textContent = `your result: ${score} / ${quantity}`;
+
+        storeUserHistory(name, `${score} / ${quantity}`);
     };
 
     answerBtns.forEach((btn) => {

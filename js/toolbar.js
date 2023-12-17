@@ -52,11 +52,11 @@ toolbarBtns.forEach((btn) => {
         const lang = e.target.dataset.lang;
         handleClickTab(tabName, lang);
         if (tabName === "true-or-false") {
-            exirciseTrueOrFalse(pairs);
+            exirciseTrueOrFalse(pairs, "true or false");
         } else if (tabName === "quiz" && lang === "en") {
-            exsiciseQuiz(pairs, "en");
+            exsiciseQuiz(pairs, "en", "word-translation");
         } else if (tabName === "quiz" && lang === "uk") {
-            exsiciseQuiz(pairs, "uk");
+            exsiciseQuiz(pairs, "uk", "translation - word");
         } else if (tabName === "words") {
             myWords(pairs);
         } else if (tabName === "history") {

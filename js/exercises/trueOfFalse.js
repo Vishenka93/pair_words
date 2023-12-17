@@ -1,3 +1,5 @@
+import { storeUserHistory } from "../functions.js";
+
 const item = document.querySelector(".true-or-false-content__item");
 const currentQuestionShow = document.querySelector(
     ".trueOfFalse__current-question"
@@ -12,7 +14,7 @@ const restartBtn = document.querySelector(".restart");
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 let quantity = 12;
-export const exirciseTrueOrFalse = (pairs) => {
+export const exirciseTrueOrFalse = (pairs, name) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
     const randomWordsUk = pairs
         .sort(() => 0.5 - Math.random())
@@ -55,14 +57,7 @@ export const exirciseTrueOrFalse = (pairs) => {
         result.style.display = "block";
         resultScore.textContent = `your result: ${score} / ${quantity}`;
 
-        const history = JSON.parse(localStorage.getItem("history")) || [];
-        const userResult = {
-            timeStamp: Date.now(),
-            name: "true of false",
-            stats: `${score} / ${quantity}`,
-        };
-        history.push(userResult);
-        localStorage.setItem("history", JSON.stringify(history));
+        storeUserHistory(name, `${score} / ${quantity}`);
     };
 
     btns.forEach(([btn, answer]) => {
