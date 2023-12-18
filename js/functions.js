@@ -7,5 +7,4 @@ export const storeUserHistory = (name, result) => {
     };
     history.push(userResult);
     localStorage.setItem("history", JSON.stringify(history));
-    console.log("dada");
 };
