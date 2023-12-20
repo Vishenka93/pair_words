@@ -9,3 +9,4 @@ export const storeUserHistory = (name, result) => {
     localStorage.setItem("history", JSON.stringify(history));
 };
 
+
