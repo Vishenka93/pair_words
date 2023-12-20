@@ -13,7 +13,7 @@ const restartBtn = document.querySelector(".restart");
 // пары слов
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
-let quantity = 12;
+let quantity = 2;
 export const exirciseTrueOrFalse = (pairs, name) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
     const randomWordsUk = pairs
@@ -58,6 +58,7 @@ export const exirciseTrueOrFalse = (pairs, name) => {
         resultScore.textContent = `your result: ${score} / ${quantity}`;
 
         storeUserHistory(name, `${score} / ${quantity}`);
+        coverUpStore(score, quantity)
     };
 
     btns.forEach(([btn, answer]) => {

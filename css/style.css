@@ -212,3 +212,32 @@ button:hover {
     background-color: rgb(116, 116, 226);
 }
 
+
+
+.content__history {
+    margin-top: 50px;
+}
+.content__check input {
+    margin-bottom: 20px;
+}
+.content__check {
+    display:flex;
+justify-content:center;
+align-items:center;
+height: 100vh;
+}
+
+.td-class {
+    border:  solid rgb(240, 188, 120);
+    padding: 15px 35px;
+    font-size: 18px;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+.red {
+    background-color: red;
+}
