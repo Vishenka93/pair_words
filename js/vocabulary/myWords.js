@@ -1,3 +1,4 @@
+import { checkHasDublicate } from "../functions.js";
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
@@ -100,7 +101,14 @@ export const myWords = (pairs) => {
             isEdit = false;
             btn.textContent = "ADD WORD PAIR";
         } else {
-            pairs.push({ ...pair, id: pairs.length });
+            const isDublicate = checkHasDublicate(pair);
+            if (isDublicate) {
+                //выводим сообщение юзеру что это дубликат
+                console.log("here");
+            } else {
+                pairs.push({ ...pair, id: pairs.length });
+                console.log("here1");
+            }
         }
         localStorage.setItem("words", JSON.stringify(pairs));
 
