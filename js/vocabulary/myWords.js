@@ -3,6 +3,7 @@ const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
+const messageDublicate = document.querySelector(".dublicate");
 
 export const myWords = (pairs) => {
     let pair = {
@@ -103,11 +104,15 @@ export const myWords = (pairs) => {
         } else {
             const isDublicate = checkHasDublicate(pair);
             if (isDublicate) {
-                //выводим сообщение юзеру что это дубликат
-                console.log("here");
+                messageDublicate.textContent = `Word ${pair["enWord"]} already exists in your vocabulary!`;
+                messageDublicate.style.display = "block";
+
+                setTimeout(function () {
+                    messageDublicate.style.display = "none";
+                }, 2000);
             } else {
                 pairs.push({ ...pair, id: pairs.length });
-                console.log("here1");
+                messageDublicate.style.display = "none";
             }
         }
         localStorage.setItem("words", JSON.stringify(pairs));
