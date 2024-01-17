@@ -1,5 +1,5 @@
 const table = document.querySelector(".history__table-body");
-let checked = document.querySelector(".checkbox");
+let checkColor = document.querySelector(".checkbox");
 const selectDate = document.querySelector(".select__date");
 const selectNameOfEx = document.querySelector(".select__name-ex");
 const selectResult = document.querySelector(".select__result");
@@ -9,7 +9,7 @@ let filtered = [...history];
 let selectDateValue = "All";
 let selectExValue = "All";
 let selectResultValue = "All";
-checked.checked = false;
+checkColor.checked = true;
 
 const getDateStr = (time) => {
     const t = new Date(time);
@@ -43,7 +43,7 @@ const renderHistory = (tableItems) => {
             const td = document.createElement("td");
             td.classList.add("td");
             const proc = getProc(stats);
-            if (checked.checked) {
+            if (checkColor.checked === true) {
                 if (proc < 40) {
                     td.classList.add("bad");
                 } else if (proc > 40 && proc < 80) {
@@ -130,7 +130,8 @@ export const showUserHistory = () => {
         filterHistory();
         renderHistory(filtered);
     };
-    checked.onchange = (e) => {
-        checked.checked = e.target.value;
+    checkColor.onchange = (e) => {
+        checkColor.checked = e.target.checked;
+        renderHistory(filtered);
     };
 };
