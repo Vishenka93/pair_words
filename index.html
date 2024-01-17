@@ -49,6 +49,7 @@
                 </div>
                 <div class="wrapper__show-content show-content">
                     <div class="wrapper-content" data-name="words">
+                        <div class="dublicate"></div>
                         <div class="wrapper__inputs inputs">
                             <div class="inputs__item inputs__item_uk">
                                 <label for="ukrainian">Ukraine word</label>
@@ -119,12 +120,34 @@
                         </div>
                     </div>
                     <div class="content__history" data-name="history">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>date</th>
-                                    <th>exercise</th>
-                                    <th>result</th>
+                        <div class="history__filter-bar filter-bar">
+                            <div class="filter-bar__checked">
+                                <input class="checkbox" type="checkbox" />
+                                <label for="checkbox">colored</label>
+                            </div>
+                            <div class="filter-bar__select">
+                                <select class="select__date" id="">
+                                    <option value="All">All</option>
+                                    <option value="month">This month</option>
+                                    <option value="week">Last week</option>
+                                </select>
+                                <select class="select__name-ex" id="">
+                                    <option value="All">All</option>
+                                </select>
+                                <select class="select__result" id="">
+                                    <option value="All">All</option>
+                                    <option value="bad">Bad</option>
+                                    <option value="good">good</option>
+                                    <option value="excellent">excellent</option>
+                                </select>
+                            </div>
+                        </div>
+                        <table class="history__table">
+                            <thead class="history__thead">
+                                <tr class="history__tr">
+                                    <th>Date</th>
+                                    <th>Exercise</th>
+                                    <th>Result</th>
                                 </tr>
                             </thead>
                             <tbody class="history__table-body"></tbody>

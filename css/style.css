@@ -79,18 +79,49 @@ button:hover {
 
 .show-content {
     flex: 0 1 1100px;
+    position: relative;
 }
 
 .wrapper-content {
     display: flex;
     padding: 100px 10px;
     flex-direction: column;
+    position: relative;
 }
 .wrapper__inputs {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 50px;
 }
+
+/*                                                 dublicates                                       */
+
+.dublicate {
+    position: absolute;
+    border: 2px solid red;
+    border-radius: 25px;
+    top: 10px;
+    right: 100px;
+    min-width: 300px;
+    min-height: 80px;
+    display: none;
+    animation: fadeInOut 2s ease-in-out;
+    padding: 20px 10px;
+    text-align: center;
+    background: #fb769e;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+@keyframes fadeInOut {
+    100% {
+        opacity: 1;
+    }
+    0% {
+        opacity: 0;
+    }
+}
+
 .inputs {
 }
 .inputs__item {
@@ -214,7 +245,24 @@ button:hover {
 
 /*                            History table                                      */
 
-.content__mistake {
+.content__history {
+    padding: 10px;
+}
+
+.bad {
+    background: #ff5656;
+}
+.good {
+    background: #ffe486;
+}
+
+.excellent {
+    background: #5ffa46;
+}
+
+/* Стилизация таблицы*/
+
+.content__history {
     height: 100vh;
     text-align: center;
     padding: 50px 20px;
@@ -229,6 +277,53 @@ button:hover {
 }
 
 .mistake__table {
+}
+.history__filter-bar {
+    margin: 0 auto;
+    margin-bottom: 43px;
+}
+.filter-bar {
+    width: 600px;
+}
+.filter-bar__checked {
+    text-align: left;
+    margin-bottom: 57px;
+}
+
+.filter-bar__checked label {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.filter-bar__select {
+    display: flex;
+    gap: 11px;
+}
+.filter-bar__select select {
+    height: 30px;
+    color: #000205;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.select__date {
+    flex: 0 1 33%;
+}
+.select__name-ex {
+    flex: 0 1 33%;
+}
+.select__result {
+    flex: 0 1 33%;
+}
+.history__table {
     width: 614px;
     margin: 0 auto;
     color: #000;
@@ -252,6 +347,18 @@ button:hover {
 .mistake__tr th {
     border: 1px solid #000;
     padding: 15px 0px;
+}
+.history__thead {
+    text-align: center;
+    border: 1px solid #000;
+}
+.history__tr {
+}
+.history__tr th {
+    border: 1px solid #000;
+    padding: 15px 0px;
+}
+.history__table-body {
 }
 
 .td {

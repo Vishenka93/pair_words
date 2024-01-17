@@ -10,3 +10,12 @@ export const storeUserHistory = (name, result, wordMistake) => {
     localStorage.setItem("history", JSON.stringify(history));
     console.log(userResult);
 };
+
+export const checkHasDublicate = (pair) => {
+    const storagePairs = localStorage.getItem("words");
+    let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
+    const word = pair.enWord;
+    console.log(pair);
+
+    return pairs.some(({ enWord }) => enWord === word);
+};
