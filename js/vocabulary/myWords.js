@@ -1,7 +1,9 @@
+import { checkHasDublicate } from "../functions.js";
 const inputUk = document.querySelector(".wrapper__input_uk");
 const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
+const messageDublicate = document.querySelector(".dublicate");
 
 export const myWords = (pairs) => {
     let pair = {
@@ -100,7 +102,18 @@ export const myWords = (pairs) => {
             isEdit = false;
             btn.textContent = "ADD WORD PAIR";
         } else {
-            pairs.push({ ...pair, id: pairs.length });
+            const isDublicate = checkHasDublicate(pair);
+            if (isDublicate) {
+                messageDublicate.textContent = `Word ${pair["enWord"]} already exists in your vocabulary!`;
+                messageDublicate.style.display = "block";
+
+                setTimeout(function () {
+                    messageDublicate.style.display = "none";
+                }, 5000);
+            } else {
+                pairs.push({ ...pair, id: pairs.length });
+                messageDublicate.style.display = "none";
+            }
         }
         localStorage.setItem("words", JSON.stringify(pairs));
 
