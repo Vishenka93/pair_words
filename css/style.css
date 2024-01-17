@@ -79,6 +79,7 @@ button:hover {
 
 .show-content {
     flex: 0 1 1100px;
+    position: relative;
 }
 
 .wrapper-content {
@@ -240,4 +241,104 @@ button:hover {
 
 .blue {
     background-color: rgb(116, 116, 226);
+}
+
+.content__history {
+    padding: 10px;
+}
+
+.bad {
+    background: #ff5656;
+}
+.good {
+    background: #ffe486;
+}
+
+.excellent {
+    background: #5ffa46;
+}
+
+/* Стилизация таблицы*/
+
+.content__history {
+    height: 100vh;
+    text-align: center;
+    padding: 50px 20px;
+}
+.history__filter-bar {
+    margin: 0 auto;
+    margin-bottom: 43px;
+}
+.filter-bar {
+    width: 600px;
+}
+.filter-bar__checked {
+    text-align: left;
+    margin-bottom: 57px;
+}
+
+.filter-bar__checked label {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.filter-bar__select {
+    display: flex;
+    gap: 11px;
+}
+.filter-bar__select select {
+    height: 30px;
+    color: #000205;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.select__date {
+    flex: 0 1 33%;
+}
+.select__name-ex {
+    flex: 0 1 33%;
+}
+.select__result {
+    flex: 0 1 33%;
+}
+.history__table {
+    width: 614px;
+    margin: 0 auto;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #000;
+}
+.history__thead {
+    text-align: center;
+    border: 1px solid #000;
+}
+.history__tr {
+}
+.history__tr th {
+    border: 1px solid #000;
+    padding: 15px 0px;
+}
+.history__table-body {
+}
+
+.td {
+    border: 1px solid #000;
+    padding: 15px 0px;
 }
