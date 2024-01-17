@@ -109,7 +109,7 @@ export const myWords = (pairs) => {
 
                 setTimeout(function () {
                     messageDublicate.style.display = "none";
-                }, 2000);
+                }, 5000);
             } else {
                 pairs.push({ ...pair, id: pairs.length });
                 messageDublicate.style.display = "none";
