@@ -1,6 +1,6 @@
 const table = document.querySelector(".history__table-body");
 
-const getDateStr = (time) => {
+export const getDateStr = (time) => {
     const t = new Date(time);
     const day = t.getDate();
     const month = t.getMonth();

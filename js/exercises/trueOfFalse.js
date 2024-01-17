@@ -13,7 +13,7 @@ const restartBtn = document.querySelector(".restart");
 // пары слов
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
-let quantity = 12;
+let quantity = 2;
 export const exirciseTrueOrFalse = (pairs, name) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
     const randomWordsUk = pairs
@@ -47,8 +47,11 @@ export const exirciseTrueOrFalse = (pairs, name) => {
     const handleAnswer = (answer, i) => {
         //обработка ответа юзера
         const correctAnswer = selected[i]["ukWord"] === randomUk; //задумка вопроса, правильный ответ
+        const wordMistake = `${selected[i]["enWord"]}(${selected[i]["ukWord"]})`;
         if (answer === correctAnswer) {
             score += 1;
+        } else {
+            storeUserHistory(name, `${score} / ${quantity}`, wordMistake);
         }
     };
 

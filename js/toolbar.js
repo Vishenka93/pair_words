@@ -2,6 +2,7 @@ import { exirciseTrueOrFalse } from "./exercises/trueOfFalse.js";
 import { exsiciseQuiz } from "./exercises/quiz.js";
 import { myWords } from "./vocabulary/myWords.js";
 import { showUserHistory } from "./stats/history.js";
+import { showUserMistakes } from "./stats/mistake.js";
 
 const toolbarBtnWords = document.querySelector(".toolbar__words");
 const toolbarBtnTrueOrFalse = document.querySelector(
@@ -10,11 +11,13 @@ const toolbarBtnTrueOrFalse = document.querySelector(
 const toolbarBtnQuizEn = document.querySelector(".exercises__quiz-en");
 const toolbarBtnQuizUk = document.querySelector(".exercises__quiz-uk");
 const toolbarBtnHistory = document.querySelector(".stats__button");
+const toolbarBtnMistake = document.querySelector(".stats__mistake");
 
 const contentWords = document.querySelector(".wrapper-content");
 const contentTrueOrFalse = document.querySelector(".true-or-false-content");
 const contentQuiz = document.querySelector(".quiz");
 const contentHistory = document.querySelector(".content__history");
+const contentMistake = document.querySelector(".content__mistake");
 
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
@@ -25,12 +28,14 @@ const toolbarBtns = [
     toolbarBtnQuizEn,
     toolbarBtnQuizUk,
     toolbarBtnHistory,
+    toolbarBtnMistake,
 ];
 const toolbarContents = [
     contentWords,
     contentTrueOrFalse,
     contentQuiz,
     contentHistory,
+    contentMistake,
 ];
 
 const handleClickTab = (tabName, lang) => {
@@ -61,6 +66,8 @@ toolbarBtns.forEach((btn) => {
             myWords(pairs);
         } else if (tabName === "history") {
             showUserHistory();
+        } else if (tabName === "mistake") {
+            showUserMistakes();
         }
     };
 });
