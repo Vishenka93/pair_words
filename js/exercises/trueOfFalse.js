@@ -1,5 +1,5 @@
 import { storeUserHistory } from "../functions.js";
-
+import { mistakeUserHistory } from "../functions.js";
 const item = document.querySelector(".true-or-false-content__item");
 const currentQuestionShow = document.querySelector(
     ".trueOfFalse__current-question"
@@ -47,11 +47,11 @@ export const exirciseTrueOrFalse = (pairs, name) => {
     const handleAnswer = (answer, i) => {
         //обработка ответа юзера
         const correctAnswer = selected[i]["ukWord"] === randomUk; //задумка вопроса, правильный ответ
-        const wordMistake = `${selected[i]["enWord"]}(${selected[i]["ukWord"]})`;
+
         if (answer === correctAnswer) {
             score += 1;
         } else {
-            storeUserHistory(name, `${score} / ${quantity}`, wordMistake);
+            mistakeUserHistory(name, selected[i]["enWord"]);
         }
     };
 

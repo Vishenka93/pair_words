@@ -1,13 +1,24 @@
-export const storeUserHistory = (name, result, wordMistake) => {
+export const storeUserHistory = (name, result) => {
     const history = JSON.parse(localStorage.getItem("history")) || [];
     const userResult = {
         timeStamp: Date.now(),
         name: name,
         stats: result,
-        wordMis: wordMistake,
     };
     history.push(userResult);
     localStorage.setItem("history", JSON.stringify(history));
+    console.log(userResult);
+};
+
+export const mistakeUserHistory = (name, pairMistake) => {
+    const mistake = JSON.parse(localStorage.getItem("mistake")) || [];
+    const userResult = {
+        timeStamp: Date.now(),
+        name: name,
+        wordMistake: pairMistake,
+    };
+    mistake.push(userResult);
+    localStorage.setItem("mistake", JSON.stringify(mistake));
     console.log(userResult);
 };
 

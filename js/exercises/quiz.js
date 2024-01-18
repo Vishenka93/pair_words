@@ -1,4 +1,5 @@
 import { storeUserHistory } from "../functions.js";
+import { mistakeUserHistory } from "../functions.js";
 
 const item = document.querySelector(".quiz__item");
 const currentQuestionShow = document.querySelector(".quiz__question");
@@ -48,7 +49,7 @@ export const exsiciseQuiz = (pairs, lang, name) => {
         if (answer === selected[i][lang]) {
             score += 1;
         } else {
-            storeUserHistory(name, `${score} / ${quantity}`, selected[i][lang]);
+            mistakeUserHistory(name, selected[i]["enWord"]);
         }
     };
 
