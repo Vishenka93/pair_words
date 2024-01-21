@@ -4,14 +4,14 @@ const selectDate = document.querySelector(".select__date");
 const selectNameOfEx = document.querySelector(".select__name-ex");
 const selectResult = document.querySelector(".select__result");
 
-const history = JSON.parse(localStorage.getItem("history")) || [];
+let history = JSON.parse(localStorage.getItem("history")) || [];
 let filtered = [...history];
 let selectDateValue = "All";
 let selectExValue = "All";
 let selectResultValue = "All";
 checkColor.checked = true;
 
-const getDateStr = (time) => {
+export const getDateStr = (time) => {
     const t = new Date(time);
     const day = t.getDate();
     const month = t.getMonth();
@@ -111,8 +111,9 @@ const fillExSelect = (items) => {
 };
 
 export const showUserHistory = () => {
-    renderHistory(filtered);
-    const exNamse = getExNames(filtered);
+    history = JSON.parse(localStorage.getItem("history")) || [];
+    renderHistory(history);
+    const exNamse = getExNames(history);
     fillExSelect(exNamse);
 
     selectDate.onchange = (e) => {

@@ -1,4 +1,5 @@
 import { storeUserHistory } from "../functions.js";
+import { mistakeUserHistory } from "../functions.js";
 
 const item = document.querySelector(".quiz__item");
 const currentQuestionShow = document.querySelector(".quiz__question");
@@ -9,7 +10,7 @@ const content = document.querySelector(".quiz__content");
 const restartBtn = document.querySelector(".quiz__restart");
 const answerBtns = document.querySelectorAll(".quiz__button");
 
-let quantity = 12;
+let quantity = 2;
 export const exsiciseQuiz = (pairs, lang, name) => {
     const sourceLang = lang === "en" ? "enWord" : "ukWord";
     const targetLang = lang === "en" ? "ukWord" : "enWord";
@@ -47,6 +48,8 @@ export const exsiciseQuiz = (pairs, lang, name) => {
     const handleAnswer = (answer, i, lang) => {
         if (answer === selected[i][lang]) {
             score += 1;
+        } else {
+            mistakeUserHistory(name, selected[i]["enWord"]);
         }
     };
 
