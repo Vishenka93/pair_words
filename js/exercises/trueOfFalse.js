@@ -1,5 +1,6 @@
 import { storeUserHistory } from "../functions.js";
 import { mistakeUserHistory } from "../functions.js";
+import { removeMistakeUserHistory } from "../functions.js";
 const item = document.querySelector(".true-or-false-content__item");
 const currentQuestionShow = document.querySelector(
     ".trueOfFalse__current-question"
@@ -11,8 +12,6 @@ const resultScore = document.querySelector(".result__score");
 const content = document.querySelector(".content");
 const restartBtn = document.querySelector(".restart");
 // пары слов
-const storagePairs = localStorage.getItem("words");
-let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 let quantity = 2;
 export const exirciseTrueOrFalse = (pairs, name) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
@@ -50,6 +49,7 @@ export const exirciseTrueOrFalse = (pairs, name) => {
 
         if (answer === correctAnswer) {
             score += 1;
+            removeMistakeUserHistory(selected[i]["enWord"]);
         } else {
             mistakeUserHistory(name, selected[i]["enWord"]);
         }
@@ -76,9 +76,9 @@ export const exirciseTrueOrFalse = (pairs, name) => {
     });
 
     showWords(currentQuestion); //отрисовка первого вопроса при загрузке нашей игры
+    restartBtn.onclick = () => {
+        exirciseTrueOrFalse(pairs, name);
+    };
 };
 
-restartBtn.onclick = () => {
-    exirciseTrueOrFalse(pairs);
-};
 // 10 вынети в конст и сделать функционал для изменени кол-ва слов

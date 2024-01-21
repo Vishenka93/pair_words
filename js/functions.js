@@ -7,19 +7,26 @@ export const storeUserHistory = (name, result) => {
     };
     history.push(userResult);
     localStorage.setItem("history", JSON.stringify(history));
-    console.log(userResult);
 };
 
 export const mistakeUserHistory = (name, pairMistake) => {
     const mistake = JSON.parse(localStorage.getItem("mistake")) || [];
-    const userResult = {
-        timeStamp: Date.now(),
-        name: name,
-        wordMistake: pairMistake,
-    };
-    mistake.push(userResult);
-    localStorage.setItem("mistake", JSON.stringify(mistake));
-    console.log(userResult);
+    if (!mistake.some(({ wordMistake }) => wordMistake === pairMistake)) {
+        const userResult = {
+            timeStamp: Date.now(),
+            name: name,
+            wordMistake: pairMistake,
+        };
+        mistake.push(userResult);
+        localStorage.setItem("mistake", JSON.stringify(mistake));
+    }
+};
+
+export const removeMistakeUserHistory = (answer) => {
+    const mistake = JSON.parse(localStorage.getItem("mistake")) || [];
+
+    const remove = mistake.filter(({ wordMistake }) => wordMistake !== answer);
+    localStorage.setItem("mistake", JSON.stringify(remove));
 };
 
 export const checkHasDublicate = (pair) => {
