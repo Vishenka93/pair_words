@@ -193,6 +193,36 @@ button:hover {
     display: inline-block;
 }
 
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #170827;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+.popup__question {
+    margin-bottom: 40px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.popup__buttons {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+.popup__buttons button {
+    width: 200px;
+    padding: 5px 10px;
+}
+
 /* -------------------true or false-----------------------*/
 
 .true-or-false-content {

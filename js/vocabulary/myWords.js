@@ -4,7 +4,9 @@ const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
 const messageDublicate = document.querySelector(".dublicate");
-
+const popup = document.querySelector(".popup");
+const popupButtonYes = document.querySelector(".popup__button-yes");
+const popupButtonCancel = document.querySelector(".popup__button-cancel");
 export const myWords = (pairs) => {
     let pair = {
         id: null,
@@ -42,10 +44,16 @@ export const myWords = (pairs) => {
             editBtn.classList.add("delete", "blue");
 
             deleteBtn.onclick = () => {
-                pairs = pairs.filter((pair) => pair.id !== id);
-
-                localStorage.setItem("words", JSON.stringify(pairs));
-                displayPairs();
+                popup.style.display = "flex";
+                popupButtonYes.onclick = () => {
+                    pairs = pairs.filter((pair) => pair.id !== id);
+                    localStorage.setItem("words", JSON.stringify(pairs));
+                    popup.style.display = "none";
+                    displayPairs();
+                };
+                popupButtonCancel.onclick = () => {
+                    popup.style.display = "none";
+                };
             };
 
             editBtn.onclick = () => {
