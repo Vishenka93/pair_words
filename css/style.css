@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+.notscroll {
+    overflow: hidden;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -194,7 +198,7 @@ button:hover {
 }
 
 .popup {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -206,6 +210,7 @@ button:hover {
     align-items: center;
     flex-direction: column;
     display: none;
+    z-index: 10;
 }
 .popup__question {
     margin-bottom: 40px;
