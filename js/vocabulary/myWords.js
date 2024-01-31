@@ -4,6 +4,10 @@ const inputEn = document.querySelector(".wrapper__input_en");
 const btn = document.querySelector(".button-wrapper__button");
 const items = document.querySelector(".wrapper__item");
 const messageDublicate = document.querySelector(".dublicate");
+const popup = document.querySelector(".popup");
+const popupButtonYes = document.querySelector(".popup__button-yes");
+const popupButtonCancel = document.querySelector(".popup__button-cancel");
+const popupQuestion = document.querySelector(".popup__question");
 
 export const myWords = (pairs) => {
     let pair = {
@@ -42,10 +46,20 @@ export const myWords = (pairs) => {
             editBtn.classList.add("delete", "blue");
 
             deleteBtn.onclick = () => {
-                pairs = pairs.filter((pair) => pair.id !== id);
-
-                localStorage.setItem("words", JSON.stringify(pairs));
-                displayPairs();
+                popup.style.display = "flex";
+                document.body.classList.add("notscroll");
+                popupQuestion.textContent = `Are you sure you want to delete word-pair ${enWord}-${ukWord}?`;
+                popupButtonYes.onclick = () => {
+                    document.body.classList.remove("notscroll");
+                    pairs = pairs.filter((pair) => pair.id !== id);
+                    localStorage.setItem("words", JSON.stringify(pairs));
+                    popup.style.display = "none";
+                    displayPairs();
+                };
+                popupButtonCancel.onclick = () => {
+                    document.body.classList.remove("notscroll");
+                    popup.style.display = "none";
+                };
             };
 
             editBtn.onclick = () => {
