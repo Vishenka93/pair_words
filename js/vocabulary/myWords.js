@@ -9,29 +9,6 @@ const popupButtonYes = document.querySelector(".popup__button-yes");
 const popupButtonCancel = document.querySelector(".popup__button-cancel");
 const popupQuestion = document.querySelector(".popup__question");
 
-const defoultWords = [
-    { id: 0, enWord: "book", ukWord: "книга" },
-    { id: 1, enWord: "table", ukWord: "стол" },
-    { id: 2, enWord: "chair", ukWord: "стул" },
-    { id: 3, enWord: "car", ukWord: "автомобиль" },
-    { id: 4, enWord: "dog", ukWord: "собака" },
-    { id: 5, enWord: "cat", ukWord: "кот" },
-    { id: 6, enWord: "house", ukWord: "дом" },
-    { id: 7, enWord: "tree", ukWord: "дерево" },
-    { id: 8, enWord: "sun", ukWord: "солнце" },
-    { id: 9, enWord: "moon", ukWord: "луна" },
-    { id: 10, enWord: "man", ukWord: "мужчина" },
-    { id: 11, enWord: "woman", ukWord: "женщина" },
-    { id: 12, enWord: "child", ukWord: "ребенок" },
-    { id: 13, enWord: "day", ukWord: "день" },
-    { id: 14, enWord: "night", ukWord: "ночь" },
-    { id: 15, enWord: "door", ukWord: "дверь" },
-    { id: 16, enWord: "window", ukWord: "окно" },
-    { id: 17, enWord: "computer", ukWord: "компьютер" },
-    { id: 18, enWord: "phone", ukWord: "телефон" },
-    { id: 19, enWord: "friend", ukWord: "друг" },
-];
-
 export const myWords = (pairs) => {
     let pair = {
         id: null,
@@ -41,7 +18,6 @@ export const myWords = (pairs) => {
 
     let isEdit = false;
 
-    localStorage.setItem("words", JSON.stringify(defoultWords));
     const displayPairs = () => {
         items.innerHTML = "";
         pairs.forEach(({ enWord, ukWord, id }) => {
@@ -70,7 +46,8 @@ export const myWords = (pairs) => {
             editBtn.classList.add("delete", "blue");
 
             if (pairs.length <= 20) {
-                deleteBtn.disabled;
+                deleteBtn.disabled = true;
+                deleteBtn.classList.toggle("less");
             } else if (pairs.length > 20) {
                 deleteBtn.onclick = () => {
                     popup.style.display = "flex";

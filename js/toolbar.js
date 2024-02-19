@@ -3,6 +3,7 @@ import { exsiciseQuiz } from "./exercises/quiz.js";
 import { myWords } from "./vocabulary/myWords.js";
 import { showUserHistory } from "./stats/history.js";
 import { showUserMistakes } from "./stats/mistake.js";
+import { defaultWords } from "./vocabulary/defaultWords.js";
 
 const toolbarBtnWords = document.querySelector(".toolbar__words");
 const toolbarBtnTrueOrFalse = document.querySelector(
@@ -19,6 +20,9 @@ const contentQuiz = document.querySelector(".quiz");
 const contentHistory = document.querySelector(".content__history");
 const contentMistake = document.querySelector(".content__mistake");
 
+if (localStorage.getItem("words") === null) {
+    localStorage.setItem("words", JSON.stringify(defaultWords));
+}
 const storagePairs = localStorage.getItem("words");
 let pairs = storagePairs === null ? [] : JSON.parse(storagePairs);
 
