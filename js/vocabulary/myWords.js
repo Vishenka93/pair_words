@@ -45,22 +45,27 @@ export const myWords = (pairs) => {
             editBtn.textContent = "edit";
             editBtn.classList.add("delete", "blue");
 
-            deleteBtn.onclick = () => {
-                popup.style.display = "flex";
-                document.body.classList.add("notscroll");
-                popupQuestion.textContent = `Are you sure you want to delete word-pair ${enWord}-${ukWord}?`;
-                popupButtonYes.onclick = () => {
-                    document.body.classList.remove("notscroll");
-                    pairs = pairs.filter((pair) => pair.id !== id);
-                    localStorage.setItem("words", JSON.stringify(pairs));
-                    popup.style.display = "none";
-                    displayPairs();
+            if (pairs.length <= 20) {
+                deleteBtn.disabled = true;
+                deleteBtn.classList.toggle("less");
+            } else if (pairs.length > 20) {
+                deleteBtn.onclick = () => {
+                    popup.style.display = "flex";
+                    document.body.classList.add("notscroll");
+                    popupQuestion.textContent = `Are you sure you want to delete word-pair ${enWord}-${ukWord}?`;
+                    popupButtonYes.onclick = () => {
+                        document.body.classList.remove("notscroll");
+                        pairs = pairs.filter((pair) => pair.id !== id);
+                        localStorage.setItem("words", JSON.stringify(pairs));
+                        popup.style.display = "none";
+                        displayPairs();
+                    };
+                    popupButtonCancel.onclick = () => {
+                        document.body.classList.remove("notscroll");
+                        popup.style.display = "none";
+                    };
                 };
-                popupButtonCancel.onclick = () => {
-                    document.body.classList.remove("notscroll");
-                    popup.style.display = "none";
-                };
-            };
+            }
 
             editBtn.onclick = () => {
                 btn.textContent = "SAVE CHANGES";
