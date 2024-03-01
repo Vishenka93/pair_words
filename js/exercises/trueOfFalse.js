@@ -12,7 +12,7 @@ const resultScore = document.querySelector(".result__score");
 const content = document.querySelector(".content");
 const restartBtn = document.querySelector(".restart");
 // пары слов
-let quantity = 2;
+let quantity = 10;
 export const exirciseTrueOrFalse = (pairs, name) => {
     const selected = pairs.sort(() => 0.5 - Math.random()).slice(0, quantity); // тут взяли 10 слов из общего количества в словаре
     const randomWordsUk = pairs
